@@ -1,9 +1,11 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    helmet = require('helmet'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    contentLength = require('express-content-length-validator');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -19,9 +21,17 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("thisIsARandomlyWrittenLongSecretToSignTheCookiesWith!-:)"));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(contentLength.validateMax({
+    max:9999,
+    status: 400,
+    message: 'Content length is too large. Stop it!'
+}));
+
+app.use(helmet());
 
 app.use('/', routes);
 app.use('/users', users);
