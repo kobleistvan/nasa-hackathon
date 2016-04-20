@@ -1,5 +1,6 @@
 # Nasa Hackathon 2016
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
 [![bitHound Overall Score](https://www.bithound.io/projects/badges/eed6be50-0714-11e6-a869-e7b12c4c7416/score.svg)](https://www.bithound.io/github/kobleistvan/nasa-hackathon)
 [![bitHound Dependencies](https://www.bithound.io/projects/badges/eed6be50-0714-11e6-a869-e7b12c4c7416/dependencies.svg)](https://www.bithound.io/github/kobleistvan/nasa-hackathon/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/projects/badges/eed6be50-0714-11e6-a869-e7b12c4c7416/devDependencies.svg)](https://www.bithound.io/github/kobleistvan/nasa-hackathon/master/dependencies/npm)
