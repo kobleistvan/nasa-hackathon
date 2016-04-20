@@ -16,6 +16,7 @@
     "http-auth": "^2.3.1",
     "less-middleware": "1.0.x",
     "morgan": "~1.6.1",
+    "node-bebop": "^0.5.0",
     "serve-favicon": "~2.3.0",
     "xbox-controller": "^0.7.0"
   }
