@@ -11,6 +11,7 @@ var forecast = new Forecast({
 
 var weather = {
 
+	// Returns the weather conditions for a specific coordonate
     getWeatherConditions: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
