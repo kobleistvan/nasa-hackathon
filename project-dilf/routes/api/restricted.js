@@ -1,5 +1,6 @@
 var express = require('express'),
     router = express.Router(),
+    utils = require('../../lib/utils/useful'),
     api = require('../../lib/api/api');
 
 // Get the restricted zones for a specific coordinate in a range of 5 km
@@ -27,11 +28,15 @@ router.get('/', function(req, res, next) {
             message: "Latitude or longitude invalid."
         })
     }
+
+    // Retrieve the restricted areas
+
     api.getRestrictedZones({
         lat: req.query.lat,
         lon: req.query.lon
     }, function(err, response) {
         if (err) {
+            console.error(err);
             return res.json({
                 success: false,
                 message: "An error occured."
@@ -73,7 +78,7 @@ router.get('/range', function(req, res, next) {
     if (!req.query.range) {
         return res.json({
             success: false,
-            message: "Please specify the range in kilometers."
+            message: "Please specify the range in meters."
         })
     }
 
