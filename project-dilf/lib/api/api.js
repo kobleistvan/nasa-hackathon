@@ -1,3 +1,5 @@
+// API CONTROLLER FOR DRONE CONTROLLING APPLICATIONS
+
 var restrictions = require('../lib/restrictions'),
     weather = require('../lib/weather');
 

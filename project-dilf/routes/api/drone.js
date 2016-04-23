@@ -2,7 +2,6 @@ var express = require('express'),
     router = express.Router(),
     api = require('../../lib/api/api');
 
-
 router.get('/', function(req, res, next) {
     api.droneTest({
         test: "data"
