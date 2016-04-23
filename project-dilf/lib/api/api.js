@@ -44,8 +44,7 @@ var api = {
                         range: range
                     },
                     restrictedZones: {
-                        zoneCount: response.restrictedZones.length,
-                        zones: response.restrictedZones
+                        zones: response
                     }
                 });
             }
