@@ -1,17 +1,16 @@
 var Forecast = require('forecast');
 
-// Initialize 
+// Initialize the forecast retriever
 var forecast = new Forecast({
     service: 'forecast.io',
     key: 'a7da4b553c9358976d78f91c3fdc7e95',
     units: 'celcius',
     cache: false
-
 });
 
 var weather = {
 
-	// Returns the weather conditions for a specific coordonate
+    // Returns the weather conditions for specific coordinates
     getWeatherConditions: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 

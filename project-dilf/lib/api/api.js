@@ -5,7 +5,7 @@ var restricted = require('../lib/restricted'),
 
 var api = {
 
-    // Return the weatherconditions for a specific location
+    // Return the weather conditions for a specific location
     getWeather: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 

@@ -1,6 +1,5 @@
 var express = require('express'),
     router = express.Router(),
-    // middlewares = require('../middlewares'),
     weather = require('./weather'),
     restricted = require('./restricted'),
     drone = require('./drone');

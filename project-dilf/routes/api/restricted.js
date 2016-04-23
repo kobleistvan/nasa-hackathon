@@ -2,8 +2,11 @@ var express = require('express'),
     router = express.Router(),
     api = require('../../lib/api/api');
 
-// Get the restricted zones for a specific coordonate in a range of 5 km
+// Get the restricted zones for a specific coordinate in a range of 5 km
 router.get('/', function(req, res, next) {
+
+    // Validate coordinates
+
     if (!req.query.lat) {
         return res.json({
             success: false,
@@ -18,6 +21,12 @@ router.get('/', function(req, res, next) {
         })
     }
 
+    if (!utils.isValidLat(req.query.lat) || !utils.isValidLon(req.query.lon)) {
+        return res.json({
+            success: false,
+            message: "Latitude or longitude invalid."
+        })
+    }
     api.getRestrictedZones({
         lat: req.query.lat,
         lon: req.query.lon
@@ -33,8 +42,11 @@ router.get('/', function(req, res, next) {
     });
 });
 
-// Get the restricted zones for a specific coordonate in a custom range
+// Get the restricted zones for a specific coordinate in a custom range
 router.get('/range', function(req, res, next) {
+
+    // Validate coordonates
+
     if (!req.query.lat) {
         return res.json({
             success: false,
@@ -48,6 +60,15 @@ router.get('/range', function(req, res, next) {
             message: "Please specify the longitude."
         })
     }
+
+    if (!utils.isValidLat(req.query.lat) || !utils.isValidLon(req.query.lon)) {
+        return res.json({
+            success: false,
+            message: "Latitude or longitude invalid."
+        })
+    }
+
+    // Validate range
 
     if (!req.query.range) {
         return res.json({
@@ -63,6 +84,9 @@ router.get('/range', function(req, res, next) {
         })
     }
 
+
+    // Retrieve the restricted areas
+
     api.getRestrictedZones({
         lat: req.query.lat,
         lon: req.query.lon,
@@ -77,6 +101,7 @@ router.get('/range', function(req, res, next) {
             res.json(response);
         }
     });
+
 });
 
 module.exports = router;
