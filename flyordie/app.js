@@ -6,7 +6,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     contentLength = require('express-content-length-validator');
-
+var hbs = require('hbs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -15,6 +15,18 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+// builtin
+var fs = require('fs');
+//register hbs partials
+hbs.registerPartial('partial', fs.readFileSync(__dirname + '/views/partial.hbs', 'utf8'));
+hbs.registerPartials(__dirname + '/views/partials');
+// set the view engine to use handlebars
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+
+// app.use(express.static(__dirname + '/public'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -35,6 +47,7 @@ app.use(helmet());
 
 app.use('/', routes);
 app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
