@@ -8,5 +8,10 @@ $(document).ready(function(){
 
 	L.marker([46.7766092, 23.603842]).addTo(map);
 
+	function onMapClick(e) {
+	    alert("You clicked the map at " + e.latlng);
+	}
+	map.on('click', onMapClick);
+
 });
 
