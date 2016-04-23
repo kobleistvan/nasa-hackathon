@@ -1,11 +1,11 @@
 var express = require('express'),
     router = express.Router(),
     // middlewares = require('../middlewares'),
-    map = require('./map'),
+    weather = require('./weather'),
     drone = require('./drone');
 
 // Define routes to various API related handlers
 router.use('/drone', drone);
-router.use('/map', map);
+router.use('/weather', weather);
 
 module.exports = router;

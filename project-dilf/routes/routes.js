@@ -7,7 +7,7 @@ var express = require('express'),
 router.use('/api', apiRoutes);
 
 // Catch 404 under /api routes
-router.use('/api', function (req, res) {
+router.use('/api', function(req, res) {
     res.status(404);
     return res.json({
         message: 'These aren\'t the droids you\'re looking for... Move along.'
