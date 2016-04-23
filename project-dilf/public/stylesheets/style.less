@@ -1,66 +1,42 @@
+// out: style.css
+@import "../bootstrap/less/custom-bootstrap-variables.less";
+
 body {
   padding: 0px;
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-}
-
 .menu {
-	margin-right: -15px;
-	background-color: #8297ff;
+  z-index: 1001;
 
 	.glyphicon {
-		color: #fff;
-		font-size: 40px;
-		padding: 0 15px;
+		// color: #fff;
+		font-size: 20px;
+		// padding: 0 15px;
 	}
 
-	.home a {
-		color: #fff;
-		line-height: 40px;
-		font-size: 30px;
-
-		&:hover {
-			color: #ccc;
-		}
-	}
-
-	.navbar-nav>li>a {
-		padding: 5px 15px;
-		color:#fff;
-	}
-
-	&.navbar-default .navbar-nav>li>a:focus, 
-	&.navbar-default .navbar-nav>li>a:hover {
-		color: #ccc;
-	}
-
-	&.navbar-default .navbar-nav>.open>a,
-	&.navbar-default .navbar-nav>.open>a:focus,
-	&.navbar-default .navbar-nav>.open>a:hover{
-		background-color: transparent!important;
-	}
+  .logo {
+    @media (max-width: @screen-xs-max) {
+      display: none;
+    }
+  }
 
 	.dropdown-menu {
 		.glyphicon {
 			color: #ccc;
-			font-size: 30px;
-			padding: 0 15px;
-		}
-
-		li a {
-			line-height: 35px;
-		    font-size: 24px;
-		    color: #333;
+			// font-size: 30px;
+			padding-right: 15px;
 		}
 	}
 
 	.search {
-		padding-top: 10px;
 		width: 250px;
+    margin-top: -7px;
+
+    @media (max-width: @screen-xs-max) {
+      width: 200px;
+    }
 	}
 }
 

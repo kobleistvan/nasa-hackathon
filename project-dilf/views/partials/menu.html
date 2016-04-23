@@ -1,45 +1,51 @@
 {{!-- main navbar --}}
-<nav class="navbar navbar-default menu">
-  <div class="container-fluid">
+<header class="header">
+  <nav class="navbar navbar-default menu">
+    <div class="dropdown navbar-brand">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>Projects</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Mapping</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>About</a></li>
-          </ul>
-        </li>
-        <li class="home"><a href="/">Project D.I.L.F.</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-            <div class="pull-left search">
-		      	<div class="input-group">
-			      <input type="text" class="form-control" placeholder="Search for...">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">Go!</button>
-			      </span>
-			    </div><!-- /input-group -->
-			</div><!-- /.col-lg-6 -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>Projects</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Mapping</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>About</a></li>
+        </ul>
+      </div>
 
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    <a href="#" class="navbar-brand logo">Project D.I.L.F.</a>
+
+    <div class="pull-right">
+      <div class="navbar-brand">
+        <div class="search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown navbar-brand">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li><a href="/"><span class="glyphicon glyphicon-filter"></span>Layers</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-inbox"></span>Messages</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span>Account</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+</header>
