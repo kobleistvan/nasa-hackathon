@@ -4,41 +4,43 @@ var restricted = require('../lib/restricted'),
     weather = require('../lib/weather');
 
 var api = {
-    droneTest: function(data, callback) {
+
+    // Return the weatherconditions for a specific location
+    getWeather: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
-        return callback(null, {
-            result: "dronetest"
-        });
-    },
-
-    weatherTest: function(data, callback) {
-        callback = (typeof callback === 'function') ? callback : function() {};
-
-        return callback(null, {
-            result: "weathertest"
-        });
+        weather.getWeatherConditions({
+            lat: data.lat,
+            lon: data.lon
+        }, function(err, response) {
+            if (err) {
+                return callback(err);
+            } else {
+                // Filter out useless data
+                var weatherConditions = response.result.weather.currently;
+                return callback(null, weatherConditions);
+            }
+        })
     },
 
     // Return the restricted zones
     getRestrictedZones: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
-        console.log("range is: " + data.range);
-        var range = (data.range ? data.range : 5);
-        var restrictedZones = [];
+        var range = (data.range ? data.range : 5),
+            restrictedZones = [];
 
         // TODO: GET THE RESTRICTED ZONES
 
         return callback(null, {
-        	coordonates: {
-        		lat: data.lat,
-        		lon: data.lon,
-        		range: range
-        	},
+            coordonates: {
+                lat: data.lat,
+                lon: data.lon,
+                range: range
+            },
             restrictedZones: {
-            	zoneCount: restrictedZones.length,
-            	zones: restrictedZones
+                zoneCount: restrictedZones.length,
+                zones: restrictedZones
             }
         });
     }
