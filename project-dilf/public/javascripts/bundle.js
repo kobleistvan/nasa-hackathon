@@ -16,7 +16,7 @@ var leaflet_draw = require('leaflet-draw');
 $(document).ready(function () {
 
 	// create map
-	var map = L.map('map', { drawControl: true }).setView([46.7766092, 23.603842], 16);
+	var map = L.map('map').setView([46.7766092, 23.603842], 16);
 
 	// add tile
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -40,7 +40,7 @@ $(document).ready(function () {
 					message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
 				},
 				shapeOptions: {
-					color: '#00FF00'
+					color: '#FF0000'
 				}
 			}
 		},
@@ -52,8 +52,8 @@ $(document).ready(function () {
 
 	// add newly created items to the map
 	map.on('draw:created', function (e) {
-		alert("done");
-		console.log("please work3");
+		$("#save").removeClass("disabled");
+
 		var type = e.layerType,
 		    layer = e.layer;
 
@@ -78,6 +78,23 @@ $(document).ready(function () {
 
 	// }
 	// map.on('click', onMapClick);
+
+	$("#save").on('click', function (e) {
+		if (e.hasClass("disabled")) {
+			return;
+		}
+
+		var layers = map.eachLayer(function (layer) {
+			layer.toGeoJSON();
+		});
+		console.log(layers);
+
+		var jqxhr = $.post("/api/save", { polygons: layers }).done(function () {
+			alert("success");
+		}).fail(function () {
+			alert("error");
+		});
+	});
 });
 
 },{"leaflet-draw":1}]},{},[2]);
