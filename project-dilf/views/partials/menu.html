@@ -1,40 +1,43 @@
 {{!-- main navbar --}}
 <header class="header">
   <nav class="navbar navbar-default menu">
-    <div class="dropdown navbar-brand">
-
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>Projects</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Mapping</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>About</a></li>
-        </ul>
-      </div>
+    <!-- <div class="dropdown navbar-brand">
+      <ul class="dropdown-menu">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>Projects</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Mapping</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>About</a></li>
+      </ul>
+    </div> -->
 
     <a href="#" class="navbar-brand logo">Project D.I.L.F.</a>
 
     <div class="pull-right">
       <div class="navbar-brand">
-        <div class="search">
+        <form class="search-form navbar-right" role="search">
+          <input type="text" class="form-control search-control" placeholder="Search...">
+          <button type="submit" class="btn btn-link">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+        </form>
+        <!-- <div class="search">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Go!</button>
             </span>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="dropdown navbar-brand">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-cog"></span>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
         </a>
+
         <ul class="dropdown-menu pull-right">
           <li><a href="/"><span class="glyphicon glyphicon-filter"></span>Layers</a></li>
           <li role="separator" class="divider"></li>

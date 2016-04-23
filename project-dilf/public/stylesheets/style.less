@@ -1,7 +1,6 @@
-
-@import (css) "../leaflet_draw/leaflet_draw.css";
 // out: style.css
 @import "../bootstrap/less/custom-bootstrap-variables.less";
+@import "../leaflet_draw/leaflet_draw.css";
 
 body {
   padding: 0px;
@@ -15,13 +14,41 @@ body {
 	.glyphicon {
 		// color: #fff;
 		font-size: 20px;
+    line-height: initial;
 		// padding: 0 15px;
 	}
 
   .logo {
+    background-image: url(../img/logoDILF.svg);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: 15px center;
+    font-size: x-large;
+
+    padding-left: 60px;
+
     @media (max-width: @screen-xs-max) {
       display: none;
     }
+  }
+
+  .search-form {
+    margin: -8px 0;
+    white-space: nowrap;
+    width: 350px;
+    @media (max-width: @screen-xs-max) {
+      width: 150px;
+    }
+
+    input {
+      display: inline-block;
+      width: 80%;
+    }
+  }
+
+  .search-control {
+    border: 0;
+    box-shadow: none;
   }
 
 	.dropdown-menu {
@@ -45,4 +72,19 @@ body {
 #map {
 	height: 500px;
 	width: 100%;
+}
+
+.leaflet-save {
+  width: 26px;
+  position: absolute;
+  top: 330px;
+  left: 10px;
+
+  a {
+    span {
+      color: lighten(black, 30%);
+      line-height: inherit;
+    }
+  }
+
 }
