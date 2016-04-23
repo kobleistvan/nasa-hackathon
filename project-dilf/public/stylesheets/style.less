@@ -1,5 +1,6 @@
 // out: style.css
 @import "../bootstrap/less/custom-bootstrap-variables.less";
+@import "../leaflet_draw/leaflet_draw.css";
 
 body {
   padding: 0px;
@@ -71,4 +72,18 @@ body {
 #map {
 	height: 500px;
 	width: 100%;
+}
+
+.leaflet-save {
+  width: 26px;
+  position: absolute;
+  top: 330px;
+  left: 10px;
+
+  a {
+    span {
+      color: lighten(black, 30%);
+    }
+  }
+
 }

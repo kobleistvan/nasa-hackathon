@@ -1,3 +1,4 @@
+@import "../leaflet_draw/leaflet_draw.css";
 body {
   padding: 0px;
   margin: 0;
@@ -57,4 +58,13 @@ body {
 #map {
   height: 500px;
   width: 100%;
+}
+.leaflet-save {
+  width: 26px;
+  position: absolute;
+  top: 330px;
+  left: 10px;
+}
+.leaflet-save a span {
+  color: #4d4d4d;
 }
