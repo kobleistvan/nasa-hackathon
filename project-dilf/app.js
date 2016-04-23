@@ -7,8 +7,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     contentLength = require('express-content-length-validator');
 var hbs = require('hbs');
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
+var routes = require('./routes/routes');
 
 var app = express();
 
@@ -44,10 +44,7 @@ app.use(contentLength.validateMax({
 }));
 
 app.use(helmet());
-
 app.use('/', routes);
-app.use('/users', users);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
