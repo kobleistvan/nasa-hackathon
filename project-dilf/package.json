@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon -e hbs,html ./bin/www"
   },
   "dependencies": {
     "bluebird": "^3.3.5",
