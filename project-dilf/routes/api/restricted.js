@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
                 message: "An error occured."
             })
         } else {
-            res.json(response);
+            return res.json(response);
         }
     });
 });
@@ -77,13 +77,12 @@ router.get('/range', function(req, res, next) {
         })
     }
 
-    if (req.query.range && req.query.range > 30) {
+    if (req.query.range && (req.query.range > 30000 || req.query.range < 500)) {
         return res.json({
             success: false,
-            message: "You don't need a 30+ range."
+            message: "Ranges are in meters. It should be between 500 meters and 30.000 meters."
         })
     }
-
 
     // Retrieve the restricted areas
 
@@ -98,7 +97,7 @@ router.get('/range', function(req, res, next) {
                 message: "An error occured."
             })
         } else {
-            res.json(response);
+            return res.json(response);
         }
     });
 

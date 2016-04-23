@@ -6,7 +6,7 @@ var express = require('express'),
 // Return useful weather condition info for specific coordinates
 router.get('/', function(req, res, next) {
 
-	// Validate coordinates
+    // Validate coordinates
 
     if (!req.query.lat) {
         return res.json({
@@ -39,7 +39,7 @@ router.get('/', function(req, res, next) {
                 message: "An error occured while retrieving weather data."
             })
         } else {
-            res.json(response);
+            return res.json(response);
         }
     });
 });

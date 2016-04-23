@@ -27,22 +27,32 @@ var api = {
     getRestrictedZones: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
-        var range = (data.range ? data.range : 5),
+        var range = (data.range ? data.range : 5000),
             restrictedZones = [];
 
         // TODO: GET THE RESTRICTED ZONES
-
-        return callback(null, {
-            coordonates: {
-                lat: data.lat,
-                lon: data.lon,
-                range: range
-            },
-            restrictedZones: {
-                zoneCount: restrictedZones.length,
-                zones: restrictedZones
+        restricted.getRestrictedZones({
+            lat: data.lat,
+            lon: data.lon,
+            range: range
+        }, function(err, response) {
+            if (err) {
+                return callback(err);
+            } else {
+                return callback(null, {
+                    coordonates: {
+                        lat: data.lat,
+                        lon: data.lon,
+                        range: range
+                    },
+                    restrictedZones: {
+                        zoneCount: restrictedZones.length,
+                        zones: restrictedZones
+                    }
+                });
             }
-        });
+        })
+
     }
 
 };
