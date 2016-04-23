@@ -7,8 +7,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     contentLength = require('express-content-length-validator');
 var hbs = require('hbs');
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
+var routes = require('./routes/routes');
 
 var app = express();
 
