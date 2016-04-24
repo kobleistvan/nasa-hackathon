@@ -86,3 +86,26 @@ body {
   padding: 10px;
   text-align: right;
 }
+
+.faq {
+  width: 800px;
+  margin: auto;
+  padding: 20px;
+  display: block;
+
+}
+
+.faqTitle {
+  padding-left: 50px;
+}
+
+.faq .faqUl {
+    list-style-type: none;
+    /*background-color: lightblue;*/
+    padding-bottom: 25px;
+}
+
+
+.faq .faqUl li {
+    padding-top: 20px;
+}
