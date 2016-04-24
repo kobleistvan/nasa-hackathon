@@ -85,7 +85,7 @@ router.get('/range', function(req, res, next) {
     if (req.query.range && (req.query.range > 300000 || req.query.range < 500)) {
         return res.json({
             success: false,
-            message: "Ranges are in meters. It should be between 500 meters and 30.000 meters."
+            message: "Ranges are in meters. It should be between 500 meters and 300.000 meters."
         })
     }
 

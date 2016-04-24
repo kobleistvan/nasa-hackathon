@@ -26,10 +26,10 @@ var restrictedZones = {
 
                 for (var i = 0; i < categoryA.length; i++) {
                     var currentPoint = {
-                        latitude: categoryA[i][0],
-                        longitude: categoryA[i][1],
+                        latitude: categoryA[i][1],
+                        longitude: categoryA[i][2],
                     };
-
+                    console.log(currentPoint);
                     if (geolib.isPointInCircle(currentPoint, {
                         latitude: data.lat,
                         longitude: data.lon
@@ -41,8 +41,8 @@ var restrictedZones = {
 
                 for (var i = 0; i < categoryB.length; i++) {
                     var currentPoint = {
-                        latitude: categoryB[i][0],
-                        longitude: categoryB[i][1],
+                        latitude: categoryB[i][1],
+                        longitude: categoryB[i][2],
                     };
 
                     if (geolib.isPointInCircle(currentPoint, {
@@ -56,8 +56,8 @@ var restrictedZones = {
 
                 for (var i = 0; i < noFly.length; i++) {
                     var currentPoint = {
-                        latitude: noFly[i][0],
-                        longitude: noFly[i][1],
+                        latitude: noFly[i][1],
+                        longitude: noFly[i][2],
                     };
 
                     if (geolib.isPointInCircle(currentPoint, {
