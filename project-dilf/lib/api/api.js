@@ -50,6 +50,28 @@ var api = {
             }
         })
 
+    },
+
+    // Save a new restricted zone
+    saveRestrictedZone: function(data, callback) {
+        callback = (typeof callback === 'function') ? callback : function() {};
+
+        restricted.saveRestrictedZone({
+            restrictionCategory: data.restrictionCategory,
+            lat: data.lat,
+            lon: data.lon,
+            name1: data.name1,
+            name2: data.name2,
+            country: data.country
+        }, function(err, response) {
+            if (err) {
+                console.error("Error saving a new restricted zone.", err);
+                return callback("Error saving a new restricted zone.");
+            } else {
+                return callback(null, response);
+            }
+        });
+
     }
 
 };

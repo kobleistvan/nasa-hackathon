@@ -3,6 +3,7 @@ var restrictedZonesModel = require('../models/restrictedZones'),
 
 var restrictedZones = {
 
+    // Returns all the restricted zones
     getRestrictedZones: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
@@ -15,7 +16,7 @@ var restrictedZones = {
                 var restrictedZones = response.restrictedZones;
                 var categoryA = restrictedZones.categoryA;
                 var categoryB = restrictedZones.categoryB;
-                var noFlyZone = restrictedZones.noFly;
+                var noFly = restrictedZones.noFly;
 
                 var filteredRestrictedZones = {
                     categoryA: [],
@@ -36,10 +37,63 @@ var restrictedZones = {
                         filteredRestrictedZones.categoryA.push(categoryA[i]);
                     }
                 }
+
+
+                for (var i = 0; i < categoryB.length; i++) {
+                    var currentPoint = {
+                        latitude: categoryB[i][0],
+                        longitude: categoryB[i][1],
+                    };
+
+                    if (geolib.isPointInCircle(currentPoint, {
+                        latitude: data.lat,
+                        longitude: data.lon
+                    }, data.range)) {
+                        filteredRestrictedZones.categoryB.push(categoryB[i]);
+                    }
+                }
+
+
+                for (var i = 0; i < noFly.length; i++) {
+                    var currentPoint = {
+                        latitude: noFly[i][0],
+                        longitude: noFly[i][1],
+                    };
+
+                    if (geolib.isPointInCircle(currentPoint, {
+                        latitude: data.lat,
+                        longitude: data.lon
+                    }, data.range)) {
+                        filteredRestrictedZones.noFly.push(noFly[i]);
+                    }
+                }
                 return callback(null, filteredRestrictedZones);
             }
 
         })
+    },
+
+    // Save a new restricted zone
+    saveRestrictedZone: function(data, callback) {
+        callback = (typeof callback === 'function') ? callback : function() {};
+
+        restrictedZonesModel.saveRestrictedZone({
+        	restrictionCategory: data.restrictionCategory,
+            lat: data.lat,
+            lon: data.lon,
+            name1: data.name1,
+            name2: data.name2,
+            country: data.country
+        }, function(err, response) {
+            if (err) {
+                console.error("Error saving a new restricted zone.", err);
+                return callback("Error saving a new restricted zone.");
+            } else {
+            	return callback(null, response);
+            }
+        });
+
+
     }
 
 };
