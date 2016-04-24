@@ -30,6 +30,31 @@ $(document).ready(function () {
 	var drawnItems = new L.FeatureGroup();
 	map.addLayer(drawnItems);
 
+	var polygonOffice = L.polygon([
+	    [46.776647798619024, 23.60310137271881],
+	    [46.7758322109866, 23.603578805923465],
+	    [46.77612244403731, 23.60468924045563],
+			[46.776952722354096, 23.604125976562504],
+			[46.776647798619024, 23.60310137271881],
+	], {color: 'red'}).addTo(map);
+
+	var polygonBRD = L.polygon([
+			[46.777048240277416, 23.606132268905643],
+			[46.7767469908669, 23.606341481208805],
+			[46.77685720426138, 23.60671162605286],
+			[46.77715845305531, 23.60648095607758],
+			[46.777048240277416, 23.606132268905643],
+	], {color: 'red'}).addTo(map);
+
+	var polygonLiceu = L.polygon([
+			[46.77857283034822, 23.60046207904816],
+			[46.77779400900659, 23.600161671638492],
+			[46.777066609089395, 23.60122919082642],
+			[46.77765073404244, 23.601862192153934],
+			[46.77858385132409, 23.601078987121582],
+			[46.77857283034822, 23.60046207904816],
+	], {color: 'red'}).addTo(map);
+
 	var geoJSON = new L.geoJSON();
 
 	// Initialise the draw control and pass it the FeatureGroup of editable layers
@@ -42,7 +67,7 @@ $(document).ready(function () {
 					message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
 				},
 				shapeOptions: {
-					color: '#FF0000'
+					color: 'blue'
 				}
 			}
 		},
@@ -91,7 +116,12 @@ $(document).ready(function () {
 		}
 		console.log(drawnItems, drawnItems.toString(), "+++");
 		var layers = geoJSON;
-		console.log(layers);
+		console.log(layers['_layers']);
+		for (var prop in layers['_layers']) {
+			console.log(prop);
+	    console.log(prop['feature']);
+		}
+
 
 		var jqxhr = $.post("/api/save", { polygons: layers }).done(function () {
 			alert("success");
