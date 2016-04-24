@@ -27,8 +27,8 @@ var api = {
     getRestrictedZones: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
-        var range = (data.range ? data.range : 5000);
-
+        var range = (data.range ? data.range : 10000);
+        console.log(range)
         restricted.getRestrictedZones({
             lat: data.lat,
             lon: data.lon,
