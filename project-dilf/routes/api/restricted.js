@@ -108,4 +108,33 @@ router.get('/range', function(req, res, next) {
 
 });
 
+
+// Save a new restricted zone
+router.get('/x', function(req, res, next) {
+
+    // Validate coordinates
+
+    // Save the restricted area
+
+    api.saveRestrictedZone({
+        restrictionCategory: 'categoryA',
+        lat: 33.333,
+        lon: 44.444,
+        name1: 'batman1',
+        name2: 'batman2',
+        country: 'transylvania'
+
+    }, function(err, response) {
+        if (err) {
+            console.error(err);
+            return res.json({
+                success: false,
+                message: "An error occured."
+            })
+        } else {
+            return res.json(response);
+        }
+    });
+});
+
 module.exports = router;
