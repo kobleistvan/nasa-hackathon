@@ -1,0 +1,12 @@
+{
+  "name": "electron-flier",
+  "version": "1.0.0",
+  "description": "A minimal Electron application for flying drones",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.37.0"
+  }
+}
