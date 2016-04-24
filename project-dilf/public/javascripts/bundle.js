@@ -30,6 +30,8 @@ $(document).ready(function () {
 	var drawnItems = new L.FeatureGroup();
 	map.addLayer(drawnItems);
 
+	var geoJSON = new L.geoJSON();
+
 	// Initialise the draw control and pass it the FeatureGroup of editable layers
 	var drawControl = new L.Control.Draw({
 		draw: {
@@ -62,9 +64,13 @@ $(document).ready(function () {
 			console.log("marker set to: ", e.latlng);
 		}
 
+		// console.log("---", geoJSON);
+		geoJSON.addData(layer.toGeoJSON());
 		// Do whatever else you need to. (save to db, add to map etc)
 		map.addLayer(layer);
+		// console.log("ughj:              ", geoJSON);
 	});
+	// L.extend(json.properties, polygon.properties);
 
 	map.on('draw:edited', function (e) {
 		var layers = e.layers;
@@ -80,13 +86,11 @@ $(document).ready(function () {
 	// map.on('click', onMapClick);
 
 	$("#save").on('click', function (e) {
-		if (e.hasClass("disabled")) {
+		if ($(this).hasClass("disabled")) {
 			return;
 		}
-
-		var layers = map.eachLayer(function (layer) {
-			layer.toGeoJSON();
-		});
+		console.log(drawnItems, drawnItems.toString(), "+++");
+		var layers = geoJSON;
 		console.log(layers);
 
 		var jqxhr = $.post("/api/save", { polygons: layers }).done(function () {
