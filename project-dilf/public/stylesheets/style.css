@@ -68,7 +68,7 @@ body {
 .leaflet-save {
   width: 26px;
   position: absolute;
-  top: 330px;
+  top: 365px;
   left: 10px;
 }
 .leaflet-save a span {
@@ -81,26 +81,8 @@ body {
   padding: 10px;
   text-align: right;
 }
-
 .faq {
-  width: 800px;
+  width: 900px;
   margin: auto;
   padding: 20px;
-  display: block;
-
-}
-
-.faqTitle {
-  padding-left: 50px;
-}
-
-.faq .faqUl {
-    list-style-type: none;
-    /*background-color: lightblue;*/
-    padding-bottom: 25px;
-}
-
-
-.faq .faqUl li {
-    padding-top: 20px;
 }
