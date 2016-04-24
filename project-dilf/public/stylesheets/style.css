@@ -1,7 +1,13 @@
 @import "../leaflet_draw/leaflet_draw.css";
+html,
 body {
-  padding: 0px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
   margin: 0;
+}
+body {
+  display: table;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 .menu {
@@ -55,8 +61,13 @@ body {
     width: 200px;
   }
 }
+.content-fluid {
+  display: table-row;
+  width: 100%;
+  height: 100%;
+}
 #map {
-  height: 500px;
+  height: 100%;
   width: 100%;
 }
 .leaflet-save {
@@ -68,4 +79,10 @@ body {
 .leaflet-save a span {
   color: #4d4d4d;
   line-height: inherit;
+}
+.footer {
+  background-color: #8297ff;
+  color: white;
+  padding: 10px;
+  text-align: right;
 }
