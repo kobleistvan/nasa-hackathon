@@ -78,11 +78,12 @@ var restrictedZones = {
         callback = (typeof callback === 'function') ? callback : function() {};
 
         restrictedZonesModel.saveRestrictedZone({
+        	polygonPoints: data.polygonPoints,
         	restrictionCategory: data.restrictionCategory,
             lat: data.lat,
             lon: data.lon,
-            name1: data.name1,
-            name2: data.name2,
+            name: data.name,
+            city: data.city,
             country: data.country
         }, function(err, response) {
             if (err) {

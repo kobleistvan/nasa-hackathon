@@ -28,8 +28,10 @@ var restrictedZones = {
 
         try {
             db.push("/" + data.restrictionCategory, [
-                data.lat, data.lon, data.name1, data.name2, data.country
-            ]);
+                [
+                    data.polygonPoints, data.lat, data.lon, data.name, data.city, data.country
+                ]
+            ], false);
         } catch (error) {
             console.error(error);
             return callback("An error occured while saving an item into the database.", error);
