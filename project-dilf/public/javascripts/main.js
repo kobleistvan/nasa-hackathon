@@ -19,7 +19,8 @@ var longitude = 23.603842;
 	var drawnItems = new L.FeatureGroup();
 	map.addLayer(drawnItems);
 
-	var geoJSON = new L.geoJSON();
+	// var geoJSON = new L.geoJSON();
+	var custom_polygons = [];
 
 	// Initialise the draw control and pass it the FeatureGroup of editable layers
 	var drawControl = new L.Control.Draw({
@@ -53,12 +54,35 @@ var longitude = 23.603842;
 	        // Do marker specific actions
 	        console.log("marker set to: ", e.latlng);
 	    }
+ 		map.addLayer(layer);
 
-	    // console.log("---", geoJSON);
-	    geoJSON.addData(layer.toGeoJSON());
+	    var coordonates = layer.getLatLngs();
+	    coordonates = coordonates[0];
+	    $(coordonates).each(function(index, e){
+	    	coordonates[index].lon = coordonates[index].lng;
+	    	// $(coordonates[index]).removeProp("lng");
+	    });
+
+	    coordonates.push(coordonates[0]);
+
+	    var pol = {
+	    	polygonPoints: [],
+	    	restrictionCategory: 'categoryA',
+	        lat: 33.333,
+	        lon: 44.444,
+	        name: 'custom',
+	        city: 'Cluj-Napoca',
+	        country: 'Transylvania'
+	    }
+
+		pol.polygonPoints = coordonates;
+		pol.lat=coordonates[0].lat;
+		pol.lon=coordonates[0].lng;
+	    custom_polygons.push(pol);
+	    console.log("---", custom_polygons);
+	    // geoJSON.addData(layer.toGeoJSON());
 	    // Do whatever else you need to. (save to db, add to map etc)
-	    map.addLayer(layer);
-	    // console.log("ughj:              ", geoJSON);
+	   
 	});
 	// L.extend(json.properties, polygon.properties);
 
@@ -79,17 +103,18 @@ var longitude = 23.603842;
 		if ($(this).hasClass("disabled")) {
 			return;
 		}
-		var layers = geoJSON;
-		console.log(layers);
-		map.getBoundaries();
-		// var get_map = $.get("http://www.openstreetmap.org/api/0.6/map?bbox=left,bottom,right,top");
-		// var jqxhr = $.post( "/api/save", { polygons: layers })
-		//   .done(function() {
-		//     alert( "success" );
-		//   })
-		//   .fail(function() {
-		//     alert( "error" );
-		//   });
+
+		// console.log("save",custom_polygons);
+
+		var payload = { polygons: JSON.stringify(custom_polygons) };
+
+		var jqxhr = $.post( "/api/restricted", payload)
+		  .done(function() {
+		    alert( "Area was successfuly saved!" );
+		  })
+		  .fail(function() {
+		    alert( "error" );
+		  });
 	});
 });
 
