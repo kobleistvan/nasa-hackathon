@@ -56,9 +56,22 @@ $(document).ready(function () {
 			[46.77857283034822, 23.60046207904816],
 	], {color: 'red'}).addTo(map);
 
-	var geoJSON = new L.geoJSON();
+	// var geoJSON = new L.geoJSON();
 
 	var custom_polygons = [];
+
+	map.addControl( new L.Control.Search({
+			url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+			jsonpParam: 'json_callback',
+			propertyName: 'display_name',
+			propertyLoc: ['lat','lon'],
+			circleLocation: false,
+			markerLocation: false,
+			autoType: false,
+			autoCollapse: true,
+			minLength: 2,
+			initial: false,
+		}) );
 
 	// Initialise the draw control and pass it the FeatureGroup of editable layers
 	var drawControl = new L.Control.Draw({
@@ -134,20 +147,6 @@ $(document).ready(function () {
 
 	// }
 	// map.on('click', onMapClick);
-
-	map.addControl( new L.Control.Search({
-			url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
-			jsonpParam: 'json_callback',
-			propertyName: 'display_name',
-			propertyLoc: ['lat','lon'],
-			circleLocation: false,
-			markerLocation: false,
-			autoType: false,
-			autoCollapse: true,
-			minLength: 2,
-			initial: false,
-			position:'topright'
-		}) );
 
 	$("#save").on('click', function (e) {
 		if ($(this).hasClass("disabled")) {
