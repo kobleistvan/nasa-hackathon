@@ -63,7 +63,7 @@ $(document).ready(function () {
 					message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
 				},
 				shapeOptions: {
-					color: '#FF0000'
+					color: 'blue'
 				}
 			}
 		},
