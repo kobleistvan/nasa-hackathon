@@ -5,7 +5,8 @@ $(document).ready(function(){
 
 	// create map
 	var map = L.map('map').setView([ 46.7766092, 23.603842 ], 16);
-
+var latitude = 46.7766092;
+var longitude = 23.603842;
 	// add tile
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -17,6 +18,8 @@ $(document).ready(function(){
 	// Initialise the FeatureGroup to store editable layers
 	var drawnItems = new L.FeatureGroup();
 	map.addLayer(drawnItems);
+
+	var geoJSON = new L.geoJSON();
 
 	// Initialise the draw control and pass it the FeatureGroup of editable layers
 	var drawControl = new L.Control.Draw({
@@ -51,9 +54,13 @@ $(document).ready(function(){
 	        console.log("marker set to: ", e.latlng);
 	    }
 
+	    // console.log("---", geoJSON);
+	    geoJSON.addData(layer.toGeoJSON());
 	    // Do whatever else you need to. (save to db, add to map etc)
 	    map.addLayer(layer);
+	    // console.log("ughj:              ", geoJSON);
 	});
+	// L.extend(json.properties, polygon.properties);
 
 	map.on('draw:edited', function (e) {
 	    var layers = e.layers;
@@ -69,23 +76,20 @@ $(document).ready(function(){
 	// map.on('click', onMapClick);
 
 	$("#save").on('click', function(e) {
-		if (e.hasClass("disabled")) {
+		if ($(this).hasClass("disabled")) {
 			return;
 		}
-
-		var layers = map.eachLayer(function (layer) {
-		    layer.toGeoJSON();
-		});
+		var layers = geoJSON;
 		console.log(layers);
-
-		var jqxhr = $.post( "/api/save", {polygons: layers})
-		  .done(function() {
-		    alert( "success" );
-		  })
-		  .fail(function() {
-		    alert( "error" );
-		  });
-
+		map.getBoundaries();
+		// var get_map = $.get("http://www.openstreetmap.org/api/0.6/map?bbox=left,bottom,right,top");
+		// var jqxhr = $.post( "/api/save", { polygons: layers })
+		//   .done(function() {
+		//     alert( "success" );
+		//   })
+		//   .fail(function() {
+		//     alert( "error" );
+		//   });
 	});
 });
 
