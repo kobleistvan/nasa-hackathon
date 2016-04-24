@@ -8,6 +8,9 @@
 
 <body>
     <h1>Electron-Flyer</h1>
+    <div id='weather'>Loading weather conditions...</div>
+    <br><br><br>
+    <div id='zones'>Loading restricted zones...</div>
     <!-- In Electron, this is the correct way to include jQuery -->
     <script>
     window.$ = window.jQuery = require('./lib/jquery-2.2.3.min.js');
@@ -22,6 +25,7 @@
             console.log("Geolocation available.");
 
             navigator.geolocation.getCurrentPosition(function gotCoordinates(position) {
+                console.log("Geolocation acquired...");
                 var lat = position.coords.latitude;
                 var lon = position.coords.longitude;
 
@@ -36,7 +40,7 @@
                         console.log(response);
                         // Got weather conditions
 
-
+                        $('#weather').html('Current weather conditions: <span>' + response + '</span>');
 
                     }
                 });
@@ -54,10 +58,14 @@
                         console.log(response);
                         // Got restricted areas
 
+                        $('#zones').html('Restricted zones in your area: <span>' + response + '</span>');
 
 
                     }
                 })
+
+
+
 
 
 
