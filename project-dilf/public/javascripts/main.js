@@ -20,6 +20,7 @@ var longitude = 23.603842;
 	map.addLayer(drawnItems);
 
 	var geoJSON = new L.geoJSON();
+	var custom_polygons = [];
 
 	// Initialise the draw control and pass it the FeatureGroup of editable layers
 	var drawControl = new L.Control.Draw({
@@ -55,6 +56,11 @@ var longitude = 23.603842;
 	    }
 
 	    // console.log("---", geoJSON);
+	    // console.log(layer.getLatLngs());
+	    var pol = layer.getLatLngs();
+	    
+	    custom_polygons.push(layer.getLatLngs());
+	    console.log("---", custom_polygons);
 	    geoJSON.addData(layer.toGeoJSON());
 	    // Do whatever else you need to. (save to db, add to map etc)
 	    map.addLayer(layer);
@@ -80,8 +86,14 @@ var longitude = 23.603842;
 			return;
 		}
 		var layers = geoJSON;
-		console.log(layers);
-		map.getBoundaries();
+		console.log("dfghjkl");
+		// console.log(geoJSON.coordsToLatLng());
+
+		// drawnItems.eachLayer(function (layer) {
+		//     console.log(layer.getLatLngs());
+		// });
+
+		// map.getBoundaries();
 		// var get_map = $.get("http://www.openstreetmap.org/api/0.6/map?bbox=left,bottom,right,top");
 		// var jqxhr = $.post( "/api/save", { polygons: layers })
 		//   .done(function() {

@@ -17,7 +17,8 @@ $(document).ready(function () {
 
 	// create map
 	var map = L.map('map').setView([46.7766092, 23.603842], 16);
-
+	var latitude = 46.7766092;
+	var longitude = 23.603842;
 	// add tile
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -65,6 +66,7 @@ $(document).ready(function () {
 		}
 
 		// console.log("---", geoJSON);
+		console.log(layer.getLatLngs());
 		geoJSON.addData(layer.toGeoJSON());
 		// Do whatever else you need to. (save to db, add to map etc)
 		map.addLayer(layer);
@@ -89,15 +91,23 @@ $(document).ready(function () {
 		if ($(this).hasClass("disabled")) {
 			return;
 		}
-		console.log(drawnItems, drawnItems.toString(), "+++");
 		var layers = geoJSON;
-		console.log(layers);
+		console.log("dfghjkl");
+		// console.log(geoJSON.coordsToLatLng());
 
-		var jqxhr = $.post("/api/save", { polygons: layers }).done(function () {
-			alert("success");
-		}).fail(function () {
-			alert("error");
+		drawnItems.eachLayer(function (layer) {
+			console.log(layer.getLatLngs());
 		});
+
+		// map.getBoundaries();
+		// var get_map = $.get("http://www.openstreetmap.org/api/0.6/map?bbox=left,bottom,right,top");
+		// var jqxhr = $.post( "/api/save", { polygons: layers })
+		//   .done(function() {
+		//     alert( "success" );
+		//   })
+		//   .fail(function() {
+		//     alert( "error" );
+		//   });
 	});
 });
 
