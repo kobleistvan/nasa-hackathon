@@ -19,6 +19,7 @@
     "hpp": "^0.2.1",
     "http-auth": "^2.3.1",
     "leaflet-draw": "^0.3.0",
+    "leaflet-search": "^1.9.2",
     "less-middleware": "^2.1.0",
     "morgan": "^1.7.0",
     "mysql": "^2.10.2",
