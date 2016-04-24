@@ -1,5 +1,5 @@
 {
-  "name": "electron-flier",
+  "name": "electron-flyer",
   "version": "1.0.0",
   "description": "A minimal Electron application for flying drones",
   "main": "main.js",
@@ -8,5 +8,12 @@
   },
   "devDependencies": {
     "electron-prebuilt": "^0.37.0"
+  },
+  "dependencies": {
+    "cylon": "^1.3.0",
+    "cylon-bebop": "^0.4.0",
+    "node-hid": "^0.5.1",
+    "request": "^2.72.0",
+    "xbox-controller": "^0.7.0"
   }
 }
